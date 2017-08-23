@@ -21,7 +21,7 @@ print("\nMonolithic Regression - Liver Disorders dataset\n")
 cvFolds = 10
 datasetFolderName = 'UCI_Datasets/'
 datasetFileName = 'liver-disorders.data'
-shuffle = KFold(n_splits=cvFolds, shuffle=True, random_state=1)
+shuffle = KFold(n_splits=cvFolds, shuffle=True)
 
 
 # -----------------------------------------------------------------------------
@@ -41,7 +41,6 @@ def optimizeEstimator(name, estimator, param_grid):
 	print
 	print("Mean absolute error:")
 	y_true, y_pred = y_test, clf.predict(X_test)
-	target_names = ["class1", "class2", "class3"]
 	print(mean_absolute_error(y_true, y_pred))
 	print("================================================================================")
 	print
