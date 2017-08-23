@@ -72,7 +72,7 @@ printCVAccuracy(scores)
 # Multi-Layer Perceptron (MLP)
 
 print("Multi-Layer Perceptron")
-mlp = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(5, 2), random_state=1)
+mlp = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(5), random_state=1)
 scores = cross_val_score(mlp, wine_data, wine_target, cv=cvFolds)
 printCVAccuracy(scores)
 
