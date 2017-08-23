@@ -24,7 +24,7 @@ shuffle = KFold(n_splits=cvFolds, shuffle=True, random_state=1)
 # Global Methods
 
 def printCVAccuracy(scores):
-	print("  Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
+	print("  Average Error: %0.2f (+/- %0.2f)" % (abs(scores.mean()), scores.std() * 2))
 
 
 # -----------------------------------------------------------------------------
@@ -40,16 +40,15 @@ ld_target = ld_dataset[:, 5]
 
 print("Decision Tree")
 dtr = tree.DecisionTreeRegressor()
-scores = cross_val_score(dtr, ld_data, ld_target, cv=shuffle)
+scores = cross_val_score(dtr, ld_data, ld_target, cv=shuffle, scoring='neg_mean_absolute_error')
 printCVAccuracy(scores)
-
 
 # -----------------------------------------------------------------------------
 # Naive Bayes (Gaussian)
 
 # print("Naive Bayes (Gaussian)")
 # gnb = GaussianNB()
-# scores = cross_val_score(gnb, ld_data, ld_target, cv=shuffle)
+# scores = cross_val_score(gnb, ld_data, ld_target, cv=shuffle, scoring='neg_mean_absolute_error')
 # printCVAccuracy(scores)
 
 
@@ -60,12 +59,12 @@ k = 10
 
 print("K-Nearest Neighbors (K=10, Uniform Weights)")
 knn = neighbors.KNeighborsRegressor(k, weights='uniform')
-scores = cross_val_score(knn, ld_data, ld_target, cv=shuffle)
+scores = cross_val_score(knn, ld_data, ld_target, cv=shuffle, scoring='neg_mean_absolute_error')
 printCVAccuracy(scores)
 
 print("K-Nearest Neighbors (K=10, Distance Weights)")
 knn = neighbors.KNeighborsRegressor(k, weights='distance')
-scores = cross_val_score(knn, ld_data, ld_target, cv=shuffle)
+scores = cross_val_score(knn, ld_data, ld_target, cv=shuffle, scoring='neg_mean_absolute_error')
 printCVAccuracy(scores)
 
 
@@ -74,7 +73,7 @@ printCVAccuracy(scores)
 
 print("Multi-Layer Perceptron (MLP)")
 mlp = MLPRegressor(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(5), random_state=1)
-scores = cross_val_score(mlp, ld_data, ld_target, cv=shuffle)
+scores = cross_val_score(mlp, ld_data, ld_target, cv=shuffle, scoring='neg_mean_absolute_error')
 printCVAccuracy(scores)
 
 
@@ -83,10 +82,10 @@ printCVAccuracy(scores)
 
 print("Support Vector Machine (SVM - Linear)")
 linearSVM = svm.LinearSVR()
-scores = cross_val_score(linearSVM, ld_data, ld_target, cv=shuffle)
+scores = cross_val_score(linearSVM, ld_data, ld_target, cv=shuffle, scoring='neg_mean_absolute_error')
 printCVAccuracy(scores)
 
 print("Support Vector Machine (SVM - RBF)")
 rbfSVM = svm.SVR()
-scores = cross_val_score(rbfSVM, ld_data, ld_target, cv=shuffle)
+scores = cross_val_score(rbfSVM, ld_data, ld_target, cv=shuffle, scoring='neg_mean_absolute_error')
 printCVAccuracy(scores)
