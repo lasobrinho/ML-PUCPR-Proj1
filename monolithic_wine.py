@@ -15,6 +15,7 @@ from sklearn import svm
 
 print("\nMonolithic Classification - Wine dataset\n")
 
+
 # -----------------------------------------------------------------------------
 # Global Parameters
 
@@ -28,7 +29,7 @@ shuffle = KFold(n_splits=cvFolds, shuffle=True)
 # Global Methods
 
 def printCVAccuracy(scores):
-	print("  Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
+	print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
 
 def optimizeEstimator(name, estimator, param_grid):
 	print("================================================================================")
@@ -49,6 +50,7 @@ def optimizeEstimator(name, estimator, param_grid):
 	print
 	print(confusion_matrix(y_true, y_pred))
 	print("================================================================================")
+	print
 	print
 
 
@@ -76,12 +78,11 @@ optimizeEstimator('Decision Tree', estimator, param_grid)
 
 print("================================================================================")
 print("Naive Bayes (Gaussian)")
-print
 gnb = GaussianNB()
 scores = cross_val_score(gnb, wine_data, wine_target, cv=shuffle)
 printCVAccuracy(scores)
-print
 print("================================================================================")
+print
 print
 
 
