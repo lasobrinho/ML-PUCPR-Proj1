@@ -85,7 +85,7 @@ optimizeEstimator('K-Nearest Neighbors (KNN)', estimator, param_grid)
 # -----------------------------------------------------------------------------
 # Multi-Layer Perceptron (MLP)
 
-param_grid = {'hidden_layer_sizes': np.arange(5, 101, 50), 
+param_grid = {'hidden_layer_sizes': np.arange(5, 101, 5), 
 			  'activation': ['logistic', 'tanh', 'relu'],
 			  'solver': ['lbfgs', 'sgd', 'adam'],
 			  'alpha': [1e-5, 0.001, 0.01]}
