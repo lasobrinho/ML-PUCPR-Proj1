@@ -5,6 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import KFold
 from sklearn.metrics import classification_report
+from sklearn.metrics import confusion_matrix
 from sklearn import tree
 from sklearn.naive_bayes import GaussianNB
 from sklearn import neighbors
@@ -43,6 +44,10 @@ def optimizeEstimator(name, estimator, param_grid):
 	y_true, y_pred = y_test, clf.predict(X_test)
 	target_names = ["class1", "class2", "class3"]
 	print(classification_report(y_true, y_pred, target_names=target_names))
+	print
+	print("Confusion matrix:")
+	print
+	print(confusion_matrix(y_true, y_pred))
 	print("================================================================================")
 	print
 
