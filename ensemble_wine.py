@@ -49,3 +49,11 @@ boosting = BaggingClassifier(KNeighborsClassifier())
 scores = cross_val_score(boosting, wine_data, wine_target, cv=shuffle)
 printCVAccuracy(scores)
 
+
+# -----------------------------------------------------------------------------
+# Random Subsample
+
+print("Random Subspaces (RSS)")
+rss = BaggingClassifier(KNeighborsClassifier(), max_features=3)
+scores = cross_val_score(rss, wine_data, wine_target, cv=shuffle)
+printCVAccuracy(scores)
