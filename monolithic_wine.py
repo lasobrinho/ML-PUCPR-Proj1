@@ -5,6 +5,7 @@ from sklearn import tree
 from sklearn.naive_bayes import GaussianNB
 from sklearn import neighbors
 from sklearn.neural_network import MLPClassifier
+from sklearn import svm
 
 
 print("\nMonolithic Methods\n")
@@ -71,8 +72,21 @@ printCVAccuracy(scores)
 # -----------------------------------------------------------------------------
 # Multi-Layer Perceptron (MLP)
 
-print("Multi-Layer Perceptron")
+print("Multi-Layer Perceptron (MLP)")
 mlp = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(5), random_state=1)
 scores = cross_val_score(mlp, wine_data, wine_target, cv=cvFolds)
 printCVAccuracy(scores)
 
+
+# -----------------------------------------------------------------------------
+# Support Vector Machine (SVM)
+
+print("Support Vector Machine (SVM - Linear)")
+linearSVM = svm.LinearSVC()
+scores = cross_val_score(linearSVM, wine_data, wine_target, cv=cvFolds)
+printCVAccuracy(scores)
+
+print("Support Vector Machine (SVM - SVC/RBF)")
+rbfSVM = svm.SVC()
+scores = cross_val_score(rbfSVM, wine_data, wine_target, cv=cvFolds)
+printCVAccuracy(scores)
