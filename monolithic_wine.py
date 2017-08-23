@@ -4,6 +4,7 @@ from sklearn.model_selection import cross_val_score
 from sklearn import tree
 from sklearn.naive_bayes import GaussianNB
 from sklearn import neighbors
+from sklearn.neural_network import MLPClassifier
 
 
 print("\nMonolithic Methods\n")
@@ -65,3 +66,13 @@ print("K-Nearest Neighbors (K=10, Distance Weights)")
 knn = neighbors.KNeighborsClassifier(k, weights='distance')
 scores = cross_val_score(knn, wine_data, wine_target, cv=cvFolds)
 printCVAccuracy(scores)
+
+
+# -----------------------------------------------------------------------------
+# Multi-Layer Perceptron (MLP)
+
+print("Multi-Layer Perceptron")
+mlp = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(5, 2), random_state=1)
+scores = cross_val_score(mlp, wine_data, wine_target, cv=cvFolds)
+printCVAccuracy(scores)
+
