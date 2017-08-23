@@ -4,6 +4,7 @@ from sklearn.model_selection import cross_val_score
 from sklearn.model_selection import KFold
 from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import AdaBoostClassifier
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 
 print("\nEnsemble Classification - Wine dataset\n")
@@ -56,4 +57,13 @@ printCVAccuracy(scores)
 print("Random Subspaces (RSS)")
 rss = BaggingClassifier(KNeighborsClassifier(), max_features=3)
 scores = cross_val_score(rss, wine_data, wine_target, cv=shuffle)
+printCVAccuracy(scores)
+
+
+# -----------------------------------------------------------------------------
+# Random Forest
+
+print("Random Forest (RF)")
+rf = RandomForestClassifier()
+scores = cross_val_score(rf, wine_data, wine_target, cv=shuffle)
 printCVAccuracy(scores)
