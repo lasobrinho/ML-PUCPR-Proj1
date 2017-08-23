@@ -3,6 +3,7 @@ import numpy as np
 from sklearn.model_selection import cross_val_score
 from sklearn.model_selection import KFold
 from sklearn.ensemble import BaggingClassifier
+from sklearn.ensemble import AdaBoostClassifier
 from sklearn.neighbors import KNeighborsClassifier
 
 print("\nEnsemble Classification - Wine dataset\n")
@@ -38,3 +39,13 @@ print("Bagging")
 bagging = BaggingClassifier(KNeighborsClassifier())
 scores = cross_val_score(bagging, wine_data, wine_target, cv=shuffle)
 printCVAccuracy(scores)
+
+
+# -----------------------------------------------------------------------------
+# Boosting
+
+print("Boosting - AdaBoost")
+boosting = BaggingClassifier(KNeighborsClassifier())
+scores = cross_val_score(boosting, wine_data, wine_target, cv=shuffle)
+printCVAccuracy(scores)
+
