@@ -35,7 +35,7 @@ def optimizeEstimator(name, estimator, param_grid):
 	print("================================================================================")
 	print(name)
 	print
-	clf = GridSearchCV(estimator, param_grid, cv=shuffle, n_jobs=-1)
+	clf = GridSearchCV(estimator, param_grid, cv=shuffle, n_jobs=4)
 	clf.fit(X_train, y_train)
 	print("Best parameters set found on development set:")
 	print(clf.best_params_)
