@@ -1,0 +1,56 @@
+lucas@ubuntu:~/Documents/Machine_Learning_PUCPR/ML-PUCPR-Proj1$ python monolithic_liver.py 
+
+Monolithic Regression - Liver Disorders dataset
+
+================================================================================
+Decision Tree
+
+Best parameters set found on development set:
+{'max_depth': 2}
+
+Mean absolute error:
+2.52392848165
+================================================================================
+
+
+================================================================================
+K-Nearest Neighbors (KNN)
+
+Best parameters set found on development set:
+{'n_neighbors': 20, 'weights': 'distance'}
+
+Mean absolute error:
+2.46443282785
+================================================================================
+
+
+================================================================================
+Multi-Layer Perceptron (MLP)
+
+/usr/local/lib/python2.7/dist-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1000) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+/usr/local/lib/python2.7/dist-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1000) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+/usr/local/lib/python2.7/dist-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1000) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+/usr/local/lib/python2.7/dist-packages/sklearn/neural_network/multilayer_perceptron.py:564: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1000) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)
+Best parameters set found on development set:
+{'alpha': 0.001, 'activation': 'tanh', 'solver': 'adam', 'hidden_layer_sizes': 55}
+
+Mean absolute error:
+2.67438277611
+================================================================================
+
+
+================================================================================
+Support Vector Machine (SVM)
+
+Best parameters set found on development set:
+{'kernel': 'rbf', 'C': 100, 'gamma': 0.0001}
+
+Mean absolute error:
+2.68749930202
+================================================================================
+
+
